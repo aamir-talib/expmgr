@@ -1,33 +1,44 @@
-<h1>Listing locales</h1>
-
-<table>
+<%- model_class = Locale -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Locale %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Code</th>
-      <th>Name</th>
-      <th>Icon class</th>
-      <th>Right to left</th>
-      <th>Position</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:code) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:icon_class) %></th>
+      <th><%= model_class.human_attribute_name(:right_to_left) %></th>
+      <th><%= model_class.human_attribute_name(:position) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @locales.each do |locale| %>
       <tr>
+        <td><%= locale.id %></td>
         <td><%= locale.code %></td>
         <td><%= locale.name %></td>
         <td><%= locale.icon_class %></td>
         <td><%= locale.right_to_left %></td>
         <td><%= locale.position %></td>
-        <td><%= link_to 'Show', locale %></td>
-        <td><%= link_to 'Edit', edit_locale_path(locale) %></td>
-        <td><%= link_to 'Destroy', locale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l locale.created_at, format: :long %></td>
+        <td>
+          <%= link_to locale_path(locale), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to locale_path(locale), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Locale', new_locale_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_locale_path,
+            :class => 'btn btn-primary' %>

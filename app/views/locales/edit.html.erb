@@ -1,6 +1,5 @@
-<h1>Editing locale</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @locale %> |
-<%= link_to 'Back', locales_path %>
+<%- model_class = Locale -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Locale %></h1>
+</div>
+<%= render :partial => 'form' %>
