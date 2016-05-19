@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :locales
+
   devise_for :users, skip: [:sessions, :registrations]
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

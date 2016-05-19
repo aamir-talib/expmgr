@@ -1,0 +1,15 @@
+<%= simple_form_for(@locale) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :code %>
+    <%= f.input :name %>
+    <%= f.input :icon_class %>
+    <%= f.input :right_to_left %>
+    <%= f.input :position %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

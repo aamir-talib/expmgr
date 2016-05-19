@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @locale.code %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @locale.name %>
+</p>
+
+<p>
+  <strong>Icon class:</strong>
+  <%= @locale.icon_class %>
+</p>
+
+<p>
+  <strong>Right to left:</strong>
+  <%= @locale.right_to_left %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @locale.position %>
+</p>
+
+<%= link_to 'Edit', edit_locale_path(@locale) %> |
+<%= link_to 'Back', locales_path %>
