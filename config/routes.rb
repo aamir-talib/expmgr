@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :page_translations
+
   resources :locales
 
   devise_for :users, skip: [:sessions, :registrations]

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Locale:</strong>
+  <%= @page_translation.locale %>
+</p>
+
+<p>
+  <strong>Url code:</strong>
+  <%= @page_translation.url_code %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @page_translation.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @page_translation.body %>
+</p>
+
+<p>
+  <strong>Page:</strong>
+  <%= @page_translation.page %>
+</p>
+
+<%= link_to 'Edit', edit_page_translation_path(@page_translation) %> |
+<%= link_to 'Back', page_translations_path %>
