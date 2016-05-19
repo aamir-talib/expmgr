@@ -1,4 +1,5 @@
 ActiveAdmin.register PageTranslation do
+  permit_params :url_code, :title, :body
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
