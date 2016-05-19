@@ -1,33 +1,40 @@
-<h1>Listing page_translations</h1>
-
-<table>
+<%- model_class = PageTranslation -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => PageTranslation %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Locale</th>
-      <th>Url code</th>
-      <th>Title</th>
-      <th>Body</th>
-      <th>Page</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:url_code) %></th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:body) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @page_translations.each do |page_translation| %>
       <tr>
-        <td><%= page_translation.locale %></td>
+        <td><%= page_translation.id %></td>
         <td><%= page_translation.url_code %></td>
         <td><%= page_translation.title %></td>
         <td><%= page_translation.body %></td>
-        <td><%= page_translation.page %></td>
-        <td><%= link_to 'Show', page_translation %></td>
-        <td><%= link_to 'Edit', edit_page_translation_path(page_translation) %></td>
-        <td><%= link_to 'Destroy', page_translation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l page_translation.created_at, format: :long %></td>
+        <td>
+          <%= link_to page_translation_path(page_translation), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to page_translation_path(page_translation), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Page translation', new_page_translation_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_page_translation_path,
+            :class => 'btn btn-primary' %>

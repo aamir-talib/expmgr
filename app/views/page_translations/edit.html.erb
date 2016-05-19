@@ -1,6 +1,5 @@
-<h1>Editing page_translation</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @page_translation %> |
-<%= link_to 'Back', page_translations_path %>
+<%- model_class = PageTranslation -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => PageTranslation %></h1>
+</div>
+<%= render :partial => 'form' %>
